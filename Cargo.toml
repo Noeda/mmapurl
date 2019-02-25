@@ -1,0 +1,27 @@
+[package]
+name = "mmapurl"
+version = "0.1.0"
+authors = ["Mikko Juola <mikjuo@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+libc = "0.2"
+rayon = "1.0"
+rusoto_core = "0.36"
+rusoto_s3 = "0.36"
+lazy_static = "1.2"
+regex = "1.1"
+rand = "0.6"
+
+[lib]
+name = "mmapurl"
+crate-type = ["dylib"]
+
+# This library cannot recover from certain failures when underlying memory
+# mapping population parts are failing so I'd rather they just take down
+# everything than leave program in a weird state.
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
