@@ -46,7 +46,7 @@ const void* mmap_s3(const char* s3url, size_t* sz, int* err);
 // Note: this call may take some time to complete because it has to stop
 // threads that are potentially quite busy. Usually it's just hundreds of
 // milliseconds.
-void munmap_s3(const void* ptr);
+int munmap_s3(const void* ptr);
 
 // Takes an error code and turns it into a string that can be displayed.
 const char* mmap_s3_errstr(int err);
